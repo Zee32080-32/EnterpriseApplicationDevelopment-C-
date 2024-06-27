@@ -1,0 +1,92 @@
+﻿<Page x:Class="Coursework_2_2021.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Coursework_2_2021.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="MainPage">
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            
+            <StackPanel Grid.Column="0" Orientation="Horizontal" DockPanel.Dock="Top"   Style="{StaticResource Banner}">
+                <Label  Name="NameLabel" HorizontalAlignment="Left">Welcome</Label>
+            </StackPanel>
+            <StackPanel Grid.Column="0" >
+                <Label HorizontalAlignment="Center">Expense</Label>
+            </StackPanel>
+        </Grid>
+        
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                <Button x:Name="CloseApp" Click="CloseApp_Click">Close App</Button>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Left" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" Style ="{StaticResource AddExpenseStackPanel}" Name="DynamicInterface" Margin="5,0,0,0" VerticalAlignment="Center">
+                <StackPanel Margin="5">
+                    <Label>Item Name</Label>
+                    <TextBox Name="ItemNameTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel >
+                    <Label >Item Type</Label>
+                    <ComboBox Name="ItemTypeDropDownList">
+                        <ComboBoxItem>Food and Drink</ComboBoxItem>
+                        <ComboBoxItem>Shopping</ComboBoxItem>
+                        <ComboBoxItem>Bills</ComboBoxItem>
+                        <ComboBoxItem>Other</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label>Date</Label>
+                    <DatePicker Name="DateTextBox"></DatePicker>
+                </StackPanel>
+                <StackPanel>
+                    <Label>Amount Of Money</Label>
+                    <TextBox x:Name="AmountOfMoneyTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <RadioButton Checked="MoneyInRB_Checked" x:Name="MoneyInRB">Money In</RadioButton>
+                    <RadioButton x:Name="MoneyOutRB">Money Out</RadioButton>
+                </StackPanel>
+                <StackPanel >
+                    <Button Name="AddExpense" Click="AddExpense_Button">ADD</Button>
+                </StackPanel>
+
+            </StackPanel>
+            <Label x:Name="TotalCash">Total Cash:</Label>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
+                <Button x:Name="CreateReportButton" Click="CreateReport_Click" VerticalAlignment="Top" HorizontalAlignment="Left">Create Report</Button>
+            </StackPanel>
+            <TextBlock x:Name="ReportText"></TextBlock>
+        </StackPanel>
+
+        <Grid  DockPanel.Dock="Top" VerticalAlignment="Top" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <TextBox Margin="5" Grid.Column="0" x:Name="SearchForUser" HorizontalAlignment="Stretch" Text="Search For Payment"></TextBox>
+            <Button Height="25" Width="25" Grid.Column="1" HorizontalAlignment="Right" x:Name="Search" Click="Search_Click" Margin="5">
+                <Image Source="E:\Enterprise Application Development(C#)\MagnifyGlass.png"/>
+            </Button>
+            <Button Name="GoBackSearch"  Click="GoBackSearch_Click"  Grid.Column="2" HorizontalAlignment="Center" Margin="5">
+               Clear
+            </Button>
+
+        </Grid>
+        <Grid Style="{StaticResource Table}" x:Name="Grid" VerticalAlignment="Stretch" DockPanel.Dock="Top" >
+            <DataGrid Name="dgr">
+     
+            </DataGrid>
+        </Grid>
+        
+    </DockPanel>
+</Page>
